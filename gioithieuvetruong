@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>trường em</title>
+    <meta name="description" content="giới thiệu trường của nghị đz" />
+    <style>
+      :root {
+        --primary: #c11a1a; /* phần css làm gộp chỗ */
+        --accent: #ffd400;
+        --muted: #666;
+        --bg: #fafafa;
+        --card: #ffffff;
+        --maxw: 1100px;
+        --radius: 10px;
+        font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #1b1b1b;
+        line-height: 1.5;
+      }
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+      header {
+        background: linear-gradient(
+          180deg,
+          rgba(193, 26, 26, 0.95),
+          rgba(193, 26, 26, 0.9)
+        );
+        color: #fff;
+        padding: 18px 12px;
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+      }
+      .container {
+        width: calc(100% - 28px);
+        max-width: var(--maxw);
+        margin: 0 auto;
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .brand .logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 8px;
+        background: var(--accent);
+        display: grid;
+        place-items: center;
+        color: var(--primary);
+        font-weight: 800;
+        font-size: 20px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      }
+      .brand h1 {
+        margin: 0;
+        font-size: 18px;
+        letter-spacing: 0.3px;
+      }
+      nav {
+        margin-left: auto;
+      }
+      nav ul {
+        display: flex;
+        gap: 12px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      nav li {
+        font-weight: 600;
+      }
+      nav a {
+        color: #fff;
+        padding: 8px 10px;
+        border-radius: 8px;
+      }
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+      /* hero */
+      .hero {
+        padding: 40px 12px 28px;
+        background: url("https://scontent.fbmv1-1.fna.fbcdn.net/v/t39.30808-6/308656066_467645078722349_2189711956950092587_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=1q-vk45ek1AQ7kNvwGsSVIX&_nc_oc=AdlrIG_1_xs6stFIJIdnpDskE5vk_v2_ve2iwmR89rwuzz-EuwkwLTQw3WQVCr5HePBHp9rAhnbEYGMLcq--BHsL&_nc_zt=23&_nc_ht=scontent.fbmv1-1.fna&_nc_gid=TAgiswQm-FX4NMLHXqUwtQ&oh=00_AfYF-i2ZRSpqaxom3uVgzPcxrDCGp2a2hOaLEH-G_B_EqA&oe=68D6B224")
+          center/cover no-repeat;
+      }
+      .hero .panel {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        padding: 22px;
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        flex-wrap: wrap;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      }
+      .hero .left {
+        flex: 1;
+        min-width: 260px;
+      }
+      .hero h2 {
+        margin: 0 0 8px 0;
+        color: var(--primary);
+        font-size: 26px;
+      }
+      .hero p {
+        margin: 0 0 12px;
+        color: var(--muted);
+      }
+      .cta {
+        display: inline-block;
+        background: var(--primary);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-weight: 700;
+      }
+      .hero .imgwrap {
+        width: 220px;
+        min-width: 160px;
+        height: 140px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: linear-gradient(180deg, #fff, #eee);
+        display: grid;
+        place-items: center;
+        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.08);
+      }
+      .hero .imgwrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* main */
+      main {
+        padding: 28px 12px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 18px;
+        max-width: var(--maxw);
+        margin: 0 auto;
+      }
+      .card {
+        background: var(--card);
+        padding: 18px;
+        border-radius: 12px;
+        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.05);
+      }
+      .col-8 {
+        grid-column: span 8;
+      }
+      .col-4 {
+        grid-column: span 4;
+      }
+      h3 {
+        margin-top: 0;
+        color: var(--primary);
+      }
+      .history p {
+        color: var(--muted);
+      }
+      ul.simple {
+        padding-left: 16px;
+        color: var(--muted);
+      }
+      .facilities {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .facility {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .facility .icon {
+        width: 64px;
+        height: 56px;
+        border-radius: 8px;
+        background: #f5f5f5;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        color: var(--primary);
+      }
+      .activities {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .activity {
+        background: #fff;
+        padding: 8px 12px;
+        border-radius: 999px;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+        font-weight: 600;
+        color: var(--muted);
+      }
+
+      /* contact */
+      .contact .row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .contact .info {
+        flex: 1;
+        min-width: 220px;
+      }
+      .contact .map {
+        flex: 1;
+        min-width: 260px;
+        height: 200px;
+        border-radius: 8px;
+        background: #eee;
+        display: grid;
+        place-items: center;
+        color: var(--muted);
+      }
+
+      footer {
+        padding: 22px 12px;
+        background: #0f0f0f;
+        color: #ddd;
+        margin-top: 22px;
+      }
+      footer .inner {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      footer small {
+        opacity: 0.8;
+      }
+      /* responsive */
+      @media (max-width: 900px) {
+        .col-8 {
+          grid-column: span 12;
+        }
+        .col-4 {
+          grid-column: span 12;
+        }
+        nav ul {
+          display: none;
+        }
+        .hero .panel {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container topbar">
+        <div class="brand">
+          <div class="logo">HTM</div>
+          <div>
+            <h1>Trường THCS Hồ Tùng Mậu</h1>
+            <div style="font-size: 13px; color: rgba(255, 255, 255, 0.9)">
+              Chất lượng - Văn hóa - Sáng tạo
+            </div>
+          </div>
+        </div>
+
+        <nav aria-label="Chuyển hướng">
+          <ul>
+            <li><a href="#gioi-thieu">Giới thiệu</a></li>
+            <li><a href="#lich-su">Lịch sử</a></li>
+            <li><a href="#co-so-vat-chat">Cơ sở</a></li>
+            <li><a href="#hoat-dong">Hoạt động</a></li>
+            <li><a href="#cap-nhat-sau">Cập Nhật Sau</a></li>
+            <li><a href="#lien-he">Liên hệ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero" id="gioi-thieu" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="panel">
+          <div class="left">
+            <h2 id="hero-title">Giới thiệu về Trường THCS Hồ Tùng Mậu</h2>
+            <p>
+              Tiền thân của trường THCS Hồ Tùng Mậu hôm nay là trường cấp II dân
+              lập Hồ Tùng Mậu
+            </p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap">
+              <a class="cta" href="#cap-nhat">sơ lược về trường</a>
+              <a
+                class="cta"
+                style="background: #fff; color: var(--primary)"
+                href="#lien he"
+                >liên hệ</a
+              >
+            </div>
+          </div>
+          <div class="imgwrap" aria-hidden="true">
+            <!--ảnh của trường-->
+            <img
+              alt="các bạn lớp em"
+              src="https://dm-data.terabox.app/thumbnail/ba0f93f2cc312ceb509040536024387d?fid=4401866288619-250528-26277442443983&time=1758520800&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-EzZteqD2%2FH5oycxN%2BJwSUJ50VO4%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=372049754857462166&dp-callid=0&size=c1600_u1600&quality=100&vuk=-&ft=video"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="container" role="main">
+      <div class="grid">
+        <section
+          class="card col-8 history"
+          id="lich-su"
+          aria-labelledby="history-title"
+        >
+          <h3 id="history-title">Lịch sử & phát triển</h3>
+          <p>
+            <strong>THCS Hồ Tùng Mậu</strong>thành lập cuối năm 1951 đóng tại
+            chùa E Sơn Trung. Sơ khai trường chỉ có ba lớp và khoảng 150 HS. Do
+            thầy Hồ Hữu Ước (quê Sơn Bằng)làm hiệu trưởng được một năm và sau đó
+            thầy Nguyễn Hửu Cự (quê Sơn Ninh) làm hiệu trưởng cho đến năm 1954.
+            Trường đã có nhiều thành tích đáng kể được khu giáo dục Liên khu 4
+            khen ngợi và tặn giấy khen cho thầy Nguyễn Hữu Cự hiệu trưởng của
+            trường. Trong giai đoạn này(1951-1954) ở Hương Sơn có hai trường
+            quốc lập là trường C/2 Sơn Thịnh và trường C/2 Bình Mỹ. còn có một
+            số trường tư thục của nhà chung và ba trường cấp hai dân lập đó là
+            trường cấp hai dân lập Hồ Tùng Mậu ở Sơn Trung, trường C/2 dân lạp
+            Vỏ Liêm Sơn ở Sơn Hòa và trường C/2 dân lập Nguyễn Huệ ở vùng Long
+            Trà. Năm 1954 miền Bắc đang thực hiện cuộc giảm tô và cải cách ruộng
+            đất, một số trường học kể cả trường quốc lập không tránh khỏi sự
+            hoang mang dao động. Học sinh xin bỏ học, một số GV xin nghỉ dạy.
+            Trước tình thế đó mặt trận liên việt huyện Hương sơn quyết định hợp
+            nhất ba trường dân lập lại lấy tên trường C/2 Dân lập Hồ Tùng Mậu.
+            Địa điểm trường đóng khi đó tại vùng Đông Tràng thuộc xã Sơn Châu do
+            thầy Nguyễn Đình Chương (quế Sơn Tiến) làm hiệu trưởng, thầy Lê Mưu
+            làm Bí thư chi bộ và thầy Nguyễn Hữu Cự làm Thư kí Công đoàn, lúc
+            này trường có 7 lớp, 10 GV và khoảng 350 HS. Một năm sau trường lại
+            dời về đinh Tứ Mỹ (Sơn châu). lớp học được bố trí ngay trong đình
+            làng ở nhà thờ họ Đinh và một số nhà dân lân cận khác. Suốt bốn năm
+            (1954-1958). Trường đã có một số nổ lực vượt bậc. Ngoài việc lo đủ
+            tài liệu giảng dạy, các thầy còn làm thêm thiết bị dạy học, đồ dùng
+            học tập đảm bảo yêu cầu phục vụ dạy học. Ngoài ra trường còn xây
+            dựng được một lò gạch, tự đốt gạch để xây dựng thêm cơ sở vật chất
+            trường họ. Thời kì này trường đã trở thành một đơn vị có tầm cở
+            trong huyện nhà về công tác giáo dục. Năm 1958 trường Hồ Tùng Mậu
+            được chuyển thành trường quốc lập. Thầy Nguyễn khắc Lanh (quê Sơ
+            Hòa) được chỉ định làm hiệu trưởng, lúc này trường đã có 11 lớp và
+            khoảng 15 GV. Từ đây trường Hồ Tùng Mậu ghi thêm một mốc son chói
+            lọi. Trường đã bước sang thời kỳ phồn thịnh, tự hào vững bước đi
+            lên. Giai đoạn này trường lại dời đến địa điểm mới đóng tại vùng đập
+            Choi. Nơi giáp ranh giữa xã Sơn Châu-Sơn Bình-Sơn Hà. Lúc này trường
+            thực sự đã có cơ ngơi riêng, hai dãu nhà gồm 11 phòng học lợp bằng
+            lá cọ, tường tốc xi, bảng đen , bàn ghế được đóng bằng gỗ. Ba gian
+            nhà hiệu vụ ngăn nắp gọn gàng.. có bếp tập đoàn, có sân chơi bãi
+            tập, có vườn sinh địa , trên khu đất rộng chừng hai ha. Các thầy xa
+            gia đình được các hộ gia đình lân cận nuôi trọ. Bữa ăn có đĩa cà
+            muối ,tép rang kèm theo bát canh rau muống thật là ấm cúng và ngon
+            miệng. Lễ khai giảng năm học 1958-1959 đến với trường Hồ Tùng Mậu
+            như ngày hội lớn, vui sướng rộn ràng trong rừng cờ hoa áo mới học
+            trò. Cuối năm 1959 thầy Lanh chuyển công tác về làm thư ký công đoàn
+            GD Hà Tĩnh. Thầy Lê Mưu (quê Sơn Bình) được cử làm hiệu trưởng
+            1959-1961 ,sau đó thầy Lê Mưu đi học Đại học Sư phạm. Thầy giáo
+            Nguyễn Đình Côn (quê Sơn Phúc)về làm hiệu trưởng của
+            trường.(1961-1972)giai đoạn này do chiến tranh chống Mĩ số HS Sơn Hà
+            tách về địa phương lập thành trường riêng gọi là trường C2 Sơn Hà.
+            Lúc này trường chỉ còn lại 9 lớp và 15 GV, khoảng 500 HS. Năm 1972
+            vì lí do sức khoe thầy Nguyễn Đình Côn xin nghĩ hưu . Thầy Đinh Sĩ
+            Tâm và thầy Văn Đình Thận tiếp tục thay nhau làm hiệu
+            trưởng(1972-1974) hai thầy đều là người địa phương Sơn Châu ,Sơn
+            Bình. Suốt trong mười bảy năm (1958-1975) kể từ khi chuyển sang hệ
+            công lập trường Hồ Tùng Mậu là một đơn vị tiêu biểu của ngành GD Hà
+            Tĩnh. Mặc dù qua cuộc chiến tranh phá hoại của đế quốc Mỹ, trường
+            phải đi sơ tán vào vùng xóm Long Hội - Bão Thịnh (Sơn Bình) lớp học
+            phải che chắn băng lũy đất, trần rơm, có giai đoạn phải học vào ban
+            đêm. Trường vẫn liên tục nhiều năm giữ vững ngọn cờ đầu là đơn vị
+            tiên tiến xuất sắc của tỉnh. Với thành thích nổi bật trường đã dược
+            bộ trưởng GD Nguyễn Văn Huyên về thăm năm 1962. Đến năm 1967 một lần
+            nữa được tiếp đón thứ trưởng Hồ Trúc về thăm. Đến năm 1998 do yêu
+            cầu phát triển qui mô trường lớp của ngành GD huyện nhà, trường Hồ
+            Tùng Mậu được tái thành lập. Thời kỳ này thầy giáo Văn Đình Thi (quê
+            Sơn Châu) được cử làm hiệu trưởng (1998-2003). Lúc này trường có 16
+            lớp và khoảng 800 học sinh. Từ những ngày đầu trường tái thành lập,
+            tập thể GV của trường ,phát huy truyền thống cha anh, không ngừng
+            phấn đấu, xây dựng trường vươn lên giành lấy thành tích cao trong
+            ngành giáo dục. Trường liên tục được công nhận là trường tiên tiến
+            cấp cơ sở. Năm 2002-2003 trường có 5 thầy cô giáo đạt GV giỏi huyện
+            và một cán bộ quản lý đạt CSTĐ cấp cơ sở . Trong năm học này trường
+            có 2HS đạt HSG tỉnh, có 50 HS đạt HSG huyện và hàng trăm em đạt HS
+            tiên tiến. Trong năm học này trường đạt danh hiệu Tiên tiến cấp tỉnh
+            . Năm 2003 thầy Văn Đình Thi được nghỉ chế độ . Thầy Đào Minh Châu
+            (quê Sơn Ninh) về làm hiệu trưởng của trường . Được sự ủng hộ của
+            nhân dân hai địa phương Sơn Châu và Sơn Bình .Với sự nổ lực của BGH
+            , Chi bộ nhà trường và tập thể Hội đồng SP trường đã từng bước hoàn
+            thiện , xây dựng nhà chức năng cao tầng ,nhà công vụ GV. Phối hợp
+            với Hội phụ huynh xây dựng đường đi lối lại , sân láng bê tông ,xây
+            dựng khuôn viên cây cảnh ,xây dựng vườn sinh học,sân chơi bãi tập
+            thể thao..Năm học 2003-2004 trường có 6 GVG huyện trong đó có thầy
+            Lương Văn Đàm nhất môn Toán , cô Cù Bích Thuận giải ba môn Văn . Có
+            2 HSG tỉnh, 57 HSG huyện . Năm 2003-2004 trường đạt danh hiệu Tiên
+            tiến cấp cơ sở , Công đoàn được Liên đoàn tỉnh tặng cờ thi đua ,
+            thầy Hiệu trưởng và Chủ tịch công đoàn được tỉnh tặng Bằng
+            khen.Trường được công nhận đạt "Chuẩn quốc gia giai đoạn I".
+          </p>
+          <p>
+            từ thành lập tới giờ nhà trường đạt nhiều thành tích: tỉ lệ học sinh
+            giỏi tăng, đội ngũ giáo viên đạt chuẩn trình độ, và triển khai nhiều
+            chương trình ngoại khóa thực chất.
+          </p>
+
+          <h4>Dạy Với Phương châm</h4>
+          <p class="muted">
+            Dạy chữ, dạy người; khuyến khích sáng tạo; phát triển năng lực và
+            phẩm chất công dân.(Học để hiểu học để biết)
+          </p>
+
+          <h4>Thành tựu</h4>
+          <ul class="simple">
+            <li>
+              Học sinh đạt giải trong các kỳ thi cấp huyện, tỉnh(ko biết lấy
+              thông tin từ đâu nên em để vậy)
+            </li>
+            <li>
+              Ứng dụng CNTT trong giảng dạy và quản lý.(cái này cũng vậy em chx
+              tìm được thông tin)
+            </li>
+            <li>Môi trường học tập thân thiện, an toàn.(trường mến yêu)</li>
+          </ul>
+        </section>
+
+        <aside class="card col-4">
+          <h3>Dạy các môn</h3>
+          <p style="color: var(--muted)">
+            Toán — Lý — Hóa — Sinh — Văn — Ngoại ngữ — Tin học; tổ giáo dục thể
+            chất; tổ chính trị — tư tưởng...(chắc vậy)
+          </p>
+
+          <h3>Cơ sở & trang thiết bị</h3>
+          <div class="facilities">
+            <div class="facility">
+              <div class="icon">tốt</div>
+              <div>
+                <strong>Phòng học hiện đại</strong>
+                <div style="color: var(--muted); font-size: 13px">
+                  có tivi và màn hình để phù hợp với công tác giảng dạy
+                </div>
+              </div>
+            </div>
+
+            <div class="facility">
+              <div class="icon">có</div>
+              <div>
+                <strong>Phòng Tin & Thí nghiệm</strong>
+                <div style="color: var(--muted); font-size: 13px">
+                  Trang thiết bị đáp ứng dạy học thực hành
+                </div>
+              </div>
+            </div>
+
+            <div class="facility">
+              <div class="icon">chát lượng</div>
+              <div>
+                <strong>Sân thể thao & sân trường</strong>
+                <div style="color: var(--muted); font-size: 13px">
+                  có nơi để rèn luyện và nâng cao sức khỏe cho học sinh
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <section class="card col-8" id="hoat-dong">
+          <h3>Hoạt động giáo dục & ngoại khóa</h3>
+          <p>
+            Nhà trường tổ chức phong phú các hoạt động(em ko thấy thông tin về
+            cái này nên em để v)
+          </p>
+          <div class="activities" aria-hidden="true">
+            <span class="activity">CLB Tin học</span>
+            <span class="activity">CLB Tiếng Anh</span>
+            <span class="activity">Đội tuyển HSG</span>
+            <span class="activity">Bóng đá học</span>
+            <span class="activity">Văn nghệ — Nghệ thuật</span>
+          </div>
+
+          <h4>Văn Bản và Công Văn</h4>
+          <p style="color: var(--muted)">sẽ cập nhật trong thời gian sắp tới</p>
+        </section>
+
+        <section class="card col-4" id="so-luoc">
+          <h3>sơ lược về trường</h3>
+          <p>UY TÍN-CHẤT LƯỢNG-NGẦU LÒI VÀ ĐẸP TRAI</p>
+          <p style="color: var(--muted)">
+            (định điền cái gì đó ở đây mà quên rồi)
+          </p>
+
+          <h4>(cập nhật sau)</h4>
+          <p>
+            <strong>Người đại diện của trường</strong><br />Điện thoại:
+            <a href="tel:ko bt">em không biết</a><br />Email:
+            <a href="mailto:ko bt">cái này em cũng ko bt </a>
+          </p>
+        </section>
+
+        <section class="card col-12 contact" id="lien-he">
+          <h3>Liên hệ</h3>
+          <div class="row">
+            <div class="info">
+              <p><strong>Trường THCS Hồ Tùng Mậu</strong></p>
+              <p>Địa chỉ:xã Eawer tỉnh Đak Lak</p>
+              <p>
+                Điện thoại: <a href="nghị đz">thấy thích thì em làm</a> — Email:
+                <a href="mailto:thầy thích em làm">lười quá</a>
+              </p>
+              <p>giờ đi học:từ 7h đến 11h</p>
+            </div>
+            <div class="map" aria-hidden="true">
+              <!--dán địa chỉ của trường vào đây mà lười quá-->
+              Bản đồ (chèn địa chỉ tại đây) mà em lười quá
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container inner">
+        <small
+          >©
+          <strong
+            >cre:Nghị đz có 102(thực ra em tham khảo web của trường)</strong
+          >
+          — Trường em theo học</small
+        >
+        <small>Liên hệ: <a href="nhập sdt vào đây">em cx ko bt nx</a></small>
+      </div>
+    </footer>
+
+    <script>
+      // vòng
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const href = a.getAttribute("href");
+          if (href.length > 1) {
+            e.preventDefault();
+            const el = document.querySelector(href);
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
